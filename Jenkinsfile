@@ -15,6 +15,7 @@ pipeline {
             steps {
                 sh 'tidy -q -e *.html'
             }
+        }
 
         stage('Security Scan') {
             steps {
@@ -22,7 +23,7 @@ pipeline {
             }
         }
     }
-    
+
     stage('Upload to AWS') {
         steps {
             withAWS(region: 'us-east-2', credentials: 'aws-static') {
